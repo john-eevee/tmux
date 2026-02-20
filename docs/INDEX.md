@@ -1,238 +1,229 @@
-# Tmux Configuration - Complete Setup Index
+# Documentation Index
 
-Your tmux configuration is now fully integrated with wezterm and neovim.
+Complete guide to tmux configuration and usage.
 
-## 📁 Where Everything Is
+## Start Here
 
-### Configuration Files
-- `~/.config/tmux/tmux.conf` - Main configuration (11KB)
-- `~/.tmux.conf` - Symlink to main config
-- `~/.config/tmux/plugins/catppuccin/tmux/` - Theme plugin
+**New to tmux?** Start with [QUICKSTART.md](QUICKSTART.md) (5 minute intro)
 
-### Documentation (Read These!)
-- **START HERE:** `~/.config/tmux/CHEATSHEET.txt` - Quick reference card
-- `~/.config/tmux/README.md` - Complete guide with examples
-- `~/.config/tmux/SETUP_COMPLETE.md` - Setup details & troubleshooting
-- `~/.config/tmux/INDEX.md` - This file
+**Need a command?** Check [KEYBINDINGS.md](KEYBINDINGS.md) (complete reference)
 
-### Scripts
-- `~/.local/bin/tmux-project` - Helper script for quick project sessions
+**Want to learn workflows?** Read [WORKFLOWS.md](WORKFLOWS.md) (real examples)
 
-## 🎯 Quick Start (Choose One)
+## All Documents
 
-### Fastest Way (Recommended)
-```bash
-tmux-project myapp ~/path/to/project
-# Automatically creates: edit (nvim), build, logs windows
-```
+| Document | Purpose | Best For |
+|----------|---------|----------|
+| **README.md** | Overview & navigation | Understanding the setup |
+| **QUICKSTART.md** | Getting started | First-time users |
+| **KEYBINDINGS.md** | Complete key reference | Looking up commands |
+| **WORKFLOWS.md** | Practical examples | Learning patterns |
+| **ARCHITECTURE.md** | Design & philosophy | Understanding why |
+| **SESSION_MANAGEMENT.md** | Advanced session features | Power users |
 
-### Manual Way
-```bash
-tmux new-session -s myproject
-Ctrl+a e  # Editor with nvim
-Ctrl+a b  # Build window  
-Ctrl+a g  # Logs window
-```
-
-## 📚 Documentation Map
-
-| Need | File | What |
-|------|------|------|
-| Quick reference | `CHEATSHEET.txt` | ASCII cheat sheet with all keys |
-| Dynamic windows | `DYNAMIC_WINDOWS.md` | **NEW!** Multiple ways to create unlimited windows |
-| Learn workflow | `README.md` | Detailed guide, examples, tips |
-| Understand setup | `SETUP_COMPLETE.md` | Architecture, decisions, troubleshooting |
-| Customize keys | `tmux.conf` | The actual config (commented) |
-
-## ⌨️ Most Used Keys
-
-**Prefix = Ctrl+a**
-
-| Action | Keys |
-|--------|------|
-| New project session | `Ctrl+a C` |
-| Editor window (nvim) | `Ctrl+a e` |
-| Build window | `Ctrl+a b` |
-| Logs window | `Ctrl+a g` |
-| Next window | `Ctrl+a n` |
-| Jump to window | `Ctrl+a 1-9` |
-| Split horizontal | `Ctrl+a \|` |
-| Split vertical | `Ctrl+a -` |
-| Navigate pane | `Ctrl+a hjkl` |
-| Zoom pane | `Ctrl+a z` |
-| Detach session | `Ctrl+a d` |
-| List sessions | `Ctrl+a s` |
-| Kill session | `Ctrl+a q` |
-
-**See CHEATSHEET.txt for complete reference**
-
-## 🏗️ Architecture
+## Navigation Flowchart
 
 ```
-WezTerm Window
+Start
   │
-  ├─ Tab 1 (Project A)
-  │   └─ Tmux Session A
-  │       ├─ Window: edit (nvim)
-  │       ├─ Window: build
-  │       └─ Window: logs
+  ├─→ "I've never used tmux"
+  │   └─→ QUICKSTART.md
   │
-  ├─ Tab 2 (Project B)
-  │   └─ Tmux Session B
-  │       ├─ Window: edit
-  │       ├─ Window: build
-  │       └─ Window: logs
+  ├─→ "I need to find a key"
+  │   └─→ KEYBINDINGS.md
   │
-  └─ Tab 3 (Project C)
-      └─ Tmux Session C
-          ├─ Window: edit
-          ├─ Window: build
-          └─ Window: logs
+  ├─→ "I want to learn a workflow"
+  │   └─→ WORKFLOWS.md
+  │
+  ├─→ "I want to understand the design"
+  │   └─→ ARCHITECTURE.md
+  │
+  └─→ "I want to manage sessions advanced"
+      └─→ SESSION_MANAGEMENT.md
 ```
 
-## 💡 Key Concepts
+## By Use Case
 
-- **Wezterm Tab** = Project container (visual isolation)
-- **Tmux Session** = Project workspace (persists when detached)
-- **Tmux Window** = Separates concerns (editor vs build vs logs)
-- **Tmux Pane** = Subdivides window (side-by-side or stacked)
+### Learning Path
 
-## 🔧 Common Tasks
+1. **First 5 minutes**: [QUICKSTART.md](QUICKSTART.md)
+2. **Next 30 minutes**: [KEYBINDINGS.md](KEYBINDINGS.md)
+3. **Practical work**: [WORKFLOWS.md](WORKFLOWS.md)
+4. **Deep understanding**: [ARCHITECTURE.md](ARCHITECTURE.md)
+5. **Advanced features**: [SESSION_MANAGEMENT.md](SESSION_MANAGEMENT.md)
 
-### Start a new project
+### Quick Reference
+
+- `Ctrl+a /` - Interactive keybindings menu (in tmux)
+- `Ctrl+a ?` - All keybindings (in tmux)
+- [KEYBINDINGS.md](KEYBINDINGS.md) - Reference guide
+- [QUICKSTART.md](QUICKSTART.md) - Common tasks
+
+### Workflows
+
+Need to do something specific?
+
+- **Create session**: [QUICKSTART.md](QUICKSTART.md) → "Your First Session"
+- **Switch projects**: [QUICKSTART.md](QUICKSTART.md) → "Resume Work Later"
+- **Split windows**: [KEYBINDINGS.md](KEYBINDINGS.md) → "Panes"
+- **Web development**: [WORKFLOWS.md](WORKFLOWS.md) → "Web Development"
+- **Backend services**: [WORKFLOWS.md](WORKFLOWS.md) → "Backend Services"
+- **Debugging**: [WORKFLOWS.md](WORKFLOWS.md) → "Debugging & Troubleshooting"
+- **DevOps**: [WORKFLOWS.md](WORKFLOWS.md) → "DevOps & Infrastructure"
+- **Session tricks**: [SESSION_MANAGEMENT.md](SESSION_MANAGEMENT.md)
+
+## Files & Organization
+
+```
+~/.config/tmux/
+├── tmux.conf                           Main configuration file
+├── bin/
+│   ├── session-manager.sh              Session management utility
+│   └── session-quick.sh                Quick session switcher
+├── .sessions/                          Session metadata & snapshots
+└── docs/
+    ├── README.md                       ← Start here for overview
+    ├── INDEX.md                        ← This file
+    ├── QUICKSTART.md                   → Getting started (5 min)
+    ├── KEYBINDINGS.md                  → Complete reference
+    ├── WORKFLOWS.md                    → Real examples
+    ├── ARCHITECTURE.md                 → Design decisions
+    └── SESSION_MANAGEMENT.md           → Advanced sessions
+```
+
+## Key Concepts
+
+### Three Levels
+
+1. **Sessions** - Complete workspaces (one per project)
+2. **Windows** - Organized sections (edit, build, logs)
+3. **Panes** - Split views (side-by-side editing)
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed explanation.
+
+### Core Keybindings
+
+All use prefix: `Ctrl+a`
+
+| What | Key | Learn More |
+|------|-----|-----------|
+| Create session | `C` | [QUICKSTART.md](QUICKSTART.md) |
+| Switch session | `S` | [KEYBINDINGS.md](KEYBINDINGS.md#sessions) |
+| Create window | `c` | [KEYBINDINGS.md](KEYBINDINGS.md#windows) |
+| Navigate panes | `hjkl` | [KEYBINDINGS.md](KEYBINDINGS.md#panes) |
+| Split window | `\|` / `-` | [KEYBINDINGS.md](KEYBINDINGS.md#splitting) |
+| Detach session | `d` | [QUICKSTART.md](QUICKSTART.md) |
+
+See [KEYBINDINGS.md](KEYBINDINGS.md) for complete list.
+
+### Session Manager Commands
+
+Quick reference (from shell):
+
 ```bash
-tmux-project webapp ~/projects/webapp
-# Done! You're in the editor window with nvim running
+~/.config/tmux/bin/session-manager.sh create myproject ~/path
+~/.config/tmux/bin/session-manager.sh select
+~/.config/tmux/bin/session-manager.sh list
+~/.config/tmux/bin/session-manager.sh create-from-template myproject dev
 ```
 
-## Common Tasks
+See [SESSION_MANAGEMENT.md](SESSION_MANAGEMENT.md) for all commands.
 
-### Create Multiple Tool Windows
+## Frequently Asked
 
-**Option 1: Named windows (interactive)**
+**"Where do I start?"**
+→ [QUICKSTART.md](QUICKSTART.md)
+
+**"How do I switch between projects?"**
+→ [QUICKSTART.md](QUICKSTART.md) → "Resume work later"
+
+**"What key does...?"**
+→ [KEYBINDINGS.md](KEYBINDINGS.md)
+
+**"Show me an example"**
+→ [WORKFLOWS.md](WORKFLOWS.md)
+
+**"Why is it designed this way?"**
+→ [ARCHITECTURE.md](ARCHITECTURE.md)
+
+**"How do I manage sessions?"**
+→ [SESSION_MANAGEMENT.md](SESSION_MANAGEMENT.md)
+
+**"I'm confused"**
+→ Press `Ctrl+a /` in tmux for interactive menu
+
+## Key Files
+
+### Essential Configuration
+
+- `~/.config/tmux/tmux.conf` - Main config (ready to use, customizable)
+
+### Utilities
+
+- `~/.config/tmux/bin/session-manager.sh` - Session creation & management
+- `~/.config/tmux/bin/session-quick.sh` - Fast session switcher
+
+### State
+
+- `~/.config/tmux/.sessions/` - Metadata, snapshots, recovery
+
+## Getting Help
+
+### In tmux
+
+- **See all commands**: `Ctrl+a ?`
+- **Interactive menu**: `Ctrl+a /`
+- **Specific command**: `tmux list-keys | grep <pattern>`
+
+### In Documentation
+
+1. Check [KEYBINDINGS.md](KEYBINDINGS.md) for any command
+2. See [WORKFLOWS.md](WORKFLOWS.md) for examples
+3. Read [ARCHITECTURE.md](ARCHITECTURE.md) for understanding
+4. Check [SESSION_MANAGEMENT.md](SESSION_MANAGEMENT.md) for advanced
+
+### Shell
+
 ```bash
-Ctrl+a T        # Prompts: "Window name?"
-# Type: npm
-Ctrl+a T        # Prompts: "Window name?"
-# Type: tests
-# Now you have: editor, npm, tests windows
+# List all commands
+tmux list-keys
+
+# Test syntax
+tmux -f ~/.config/tmux/tmux.conf list-keys
+
+# Session info
+tmux list-sessions
+tmux list-windows -t session_name
+tmux list-panes -t session_name
 ```
 
-**Option 2: Auto-numbered (fast, no prompts)**
-```bash
-Ctrl+a M-t      # Creates tool1
-Ctrl+a M-t      # Creates tool2
-Ctrl+a M-t      # Creates tool3
-# Jump with: Ctrl+a 4, Ctrl+a 5, Ctrl+a 6
-```
+## Tips
 
-**Option 3: List and search all windows**
-```bash
-Ctrl+a w        # Shows all windows with numbers
-# Can type to search: "npm" finds npm window
-# Press Enter to jump there
-```
+1. **Use the menu** - `Ctrl+a /` shows all available commands
+2. **Number jumps** - `Ctrl+a 1-9` is faster than `n`/`p`
+3. **Fuzzy finder** - `Ctrl+a S` for quick session switching (if fzf installed)
+4. **Detach, don't close** - `Ctrl+a d` keeps everything running
+5. **Name things** - Clear window/session names make navigation easier
 
-See **DYNAMIC_WINDOWS.md** for comprehensive guide on unlimited window creation.
+## Next Steps
 
-### Pause work (keep session running)
-```bash
-Ctrl+a d   # Detach (you're back at shell)
-           # Session still running in background!
-```
+Choose your adventure:
 
-### Resume work later
-```bash
-tmux attach -t webapp   # Reconnect to session
-# or
-Ctrl+a s                # List sessions and select
-```
+- **I want to start using tmux right now**
+  → [QUICKSTART.md](QUICKSTART.md)
 
-### Kill a session when done
-```bash
-Ctrl+a q   # Quit current session
-# or from shell:
-tmux kill-session -t webapp
-```
+- **I need to look up a specific command**
+  → [KEYBINDINGS.md](KEYBINDINGS.md)
 
-## 🎨 Theme
+- **I want to see real examples**
+  → [WORKFLOWS.md](WORKFLOWS.md)
 
-Using **Catppuccin Mocha** to match your wezterm colors.
+- **I want to understand why it's built this way**
+  → [ARCHITECTURE.md](ARCHITECTURE.md)
 
-If theme doesn't load, verify:
-```bash
-ls ~/.config/tmux/plugins/catppuccin/tmux/
-# Should see: catppuccin.tmux, colors, modules, etc.
-```
-
-If missing:
-```bash
-mkdir -p ~/.config/tmux/plugins/catppuccin
-git clone -b v2.1.3 https://github.com/catppuccin/tmux.git \
-  ~/.config/tmux/plugins/catppuccin/tmux
-```
-
-## 🐛 Troubleshooting
-
-### Config won't load
-```bash
-tmux source ~/.config/tmux/tmux.conf
-# Or inside tmux: Ctrl+a r
-```
-
-### Colors look wrong
-```bash
-echo $TERM
-# Should output: xterm-256color or similar
-# If wrong, wezterm isn't configured correctly
-```
-
-### Session won't start
-```bash
-tmux kill-server      # Reset tmux
-tmux new-session -s test
-```
-
-### Script not found
-```bash
-# Ensure ~/.local/bin is in PATH
-echo $PATH | grep .local/bin
-
-# If not, add to ~/.config/fish/config.fish:
-set -gx PATH ~/.local/bin $PATH
-```
-
-### Session already exists
-```bash
-# Either:
-tmux attach -t existing-name   # Use existing
-tmux kill-session -t name      # Then create new
-```
-
-## ✨ What You Get
-
-✓ Three-layer terminal organization  
-✓ Persistent sessions (detach/reattach)  
-✓ Project-focused window shortcuts  
-✓ Vi-style keybindings (hjkl)  
-✓ Mouse support  
-✓ Catppuccin Mocha theme  
-✓ Helper script for quick setup  
-✓ Comprehensive documentation  
-
-## 🚀 Next Steps
-
-1. **Try it**: `tmux-project test`
-2. **Explore layouts**: `Ctrl+a L` to see presets
-3. **Read docs**: `cat ~/.config/tmux/CHEATSHEET.txt`
-4. **Customize**: Edit `~/.config/tmux/tmux.conf` as needed
-
-## 📖 Full Documentation
-
-For complete guides and examples, see:
-- `~/.config/tmux/README.md` - Full documentation with workflows
-- `~/.config/tmux/CHEATSHEET.txt` - Quick reference with ASCII diagrams
+- **I want to master session management**
+  → [SESSION_MANAGEMENT.md](SESSION_MANAGEMENT.md)
 
 ---
 
-Your terminal workflow is now optimized! 🎉
+**Ready?** Start with [QUICKSTART.md](QUICKSTART.md) and you'll be productive in minutes!
