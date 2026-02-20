@@ -1,0 +1,230 @@
+┌────────────────────────────────────────────────────────────────────────────┐
+│  TMUX + WEZTERM + NEOVIM  -  QUICK REFERENCE CARD                          │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌─ ARCHITECTURE ─────────────────────────────────────────────────────────────┐
+│                                                                            │
+│  WezTerm Tab 1          WezTerm Tab 2          WezTerm Tab 3               │
+│   (Project A)            (Project B)            (Project C)                │
+│       │                      │                      │                      │
+│  Tmux Session A         Tmux Session B        Tmux Session C               │
+│       │                      │                      │                      │
+│  ├─ edit (nvim)         ├─ edit (nvim)        ├─ edit (nvim)               │
+│  ├─ build               ├─ build              ├─ build                     │
+│  └─ logs                └─ logs               └─ logs                      │
+│       │                      │                      │                      │
+│  In each window:         In each window:      In each window:              │
+│  ├─ Panes (splits)       ├─ Panes (splits)    ├─ Panes (splits)            │
+│  └─ Text editing         └─ Text editing      └─ Text editing              │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌ NAVIGATION & SWITCHING ────────────────────────────────────────────────────┐
+│                                                                            │
+│  BETWEEN SESSIONS (projects)                                               │
+│  ├─ Ctrl+a s       List and select session                                 │
+│  ├─ Ctrl+a (       Previous session                                        │
+│  └─ Ctrl+a )       Next session                                            │
+│                                                                            │
+│  BETWEEN WINDOWS (editor/build/logs)                                       │
+│  ├─ Ctrl+a n       Next window                                             │
+│  ├─ Ctrl+a p       Previous window                                         │
+│  └─ Ctrl+a 1-9     Jump to window (1=edit, 2=build, 3=logs)                │
+│                                                                            │
+│  BETWEEN PANES (splits within window)                                      │
+│  ├─ Ctrl+a h       Focus left pane                                         │
+│  ├─ Ctrl+a j       Focus down pane                                         │
+│  ├─ Ctrl+a k       Focus up pane                                           │
+│  └─ Ctrl+a l       Focus right pane                                        │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌ CREATING & MANAGING ───────────────────────────────────────────────────────┐
+│                                                                            │
+│  NEW SESSIONS (create new project)                                         │
+│  ├─ Ctrl+a C       Create new session (interactive prompt)                 │
+│  └─ tmux-project myapp ~/path    Helper script (recommended)               │
+│                                                                            │
+│  NEW WINDOWS (within current session)                                      │
+│  ├─ Ctrl+a e       Editor window (launches nvim)                           │
+│  ├─ Ctrl+a T       Terminal window                                         │
+│  ├─ Ctrl+a b       Build/tools window                                      │
+│  ├─ Ctrl+a g       Logs window                                             │
+│  └─ Ctrl+a c       Generic new window                                      │
+│                                                                            │
+│  SPLIT PANES (subdivide window)                                            │
+│  ├─ Ctrl+a |       Split horizontal (side-by-side)                         │
+│  └─ Ctrl+a -       Split vertical (top-bottom)                             │
+│                                                                            │
+│  DELETE                                                                    │
+│  ├─ Ctrl+a w       Kill current window                                     │
+│  ├─ Ctrl+a x       Kill current pane                                       │
+│  └─ Ctrl+a q       Kill current session                                    │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌ RESIZING & LAYOUT ─────────────────────────────────────────────────────────┐
+│                                                                            │
+│  RESIZE PANES                                                              │
+│  ├─ Ctrl+a H       Expand left                                             │
+│  ├─ Ctrl+a J       Expand down                                             │
+│  ├─ Ctrl+a K       Expand up                                               │
+│  └─ Ctrl+a L       Expand right                                            │
+│                                                                            │
+│  LAYOUTS (preset pane arrangements)                                        │
+│  ├─ Ctrl+a L       Show layout menu                                        │
+│  ├─ Ctrl+a Space   Cycle to next layout                                    │
+│  ├─ Ctrl+a 1       Main vertical (1 large left, stacked right)             │
+│  ├─ Ctrl+a 2       Main horizontal (1 large top, stacked bottom)           │
+│  ├─ Ctrl+a 3       Tiled (all panes equal)                                 │
+│  ├─ Ctrl+a 4       Even vertical (equal columns)                           │
+│  └─ Ctrl+a 5       Even horizontal (equal rows)                            │
+│                                                                            │
+│  FOCUS                                                                     │
+│  ├─ Ctrl+a z       Zoom/maximize current pane (toggle)                     │
+│  └─ Ctrl+a q       Show pane numbers for reference                         │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌ SESSION LIFECYCLE ─────────────────────────────────────────────────────────┐
+│                                                                            │
+│  START                                                                     │
+│  ├─ tmux-project webapp ~/projects/webapp    ← Helper script (easiest)     │
+│  └─ tmux new-session -s myapp -c ~/path      ← Manual                      │
+│                                                                            │
+│  WORK                                                                      │
+│  ├─ Ctrl+a e    Launch editor window with nvim                             │
+│  ├─ Ctrl+a b    Create build window                                        │
+│  ├─ Ctrl+a |/-  Split panes as needed                                      │
+│  └─ ...work...                                                             │
+│                                                                            │
+│  PAUSE (keep session running in background)                                │
+│  └─ Ctrl+a d    Detach from session (switch to different project)          │
+│                                                                            │
+│  RESUME                                                                    │
+│  ├─ Ctrl+a s    List sessions, select with arrow keys                      │
+│  └─ tmux attach -t myapp    Or attach from command line                    │
+│                                                                            │
+│  END                                                                       │
+│  └─ Ctrl+a q    Kill current session (when done)                           │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌ TEXT & COPY MODE ──────────────────────────────────────────────────────────┐
+│                                                                            │
+│  COPY SELECTION                                                            │
+│  ├─ Ctrl+a [     Enter copy mode (scroll history)                          │
+│  ├─ v            Begin text selection                                      │
+│  ├─ y            Copy selection (and exit copy mode)                       │
+│  ├─ /            Search in copy mode                                       │
+│  ├─ n/N          Next/previous match in copy mode                          │
+│  └─ q            Quit copy mode (without copying)                          │
+│                                                                            │
+│  PASTE                                                                     │
+│  └─ Ctrl+a ]     Paste from copy buffer                                    │
+│                                                                            │
+│  MOUSE SUPPORT                                                             │
+│  ├─ Click         Select pane                                              │
+│  ├─ Drag          Resize panes                                             │
+│  ├─ Scroll wheel  Navigate history                                         │
+│  └─ Select text   Auto-copies to clipboard                                 │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌ OTHER USEFUL COMMANDS ─────────────────────────────────────────────────────┐
+│                                                                            │
+│  MANAGE                                                                    │
+│  ├─ Ctrl+a r       Reload tmux configuration                               │
+│  ├─ Ctrl+a ?       List all keybindings                                    │
+│  ├─ Ctrl+a ,       Rename current window                                   │
+│  ├─ Ctrl+a $       Rename current session                                  │
+│  └─ Ctrl+a d       Detach from session                                     │
+│                                                                            │
+│  LIST                                                                      │
+│  ├─ Ctrl+a s       List sessions                                           │
+│  ├─ Ctrl+a w       List windows                                            │
+│  └─ tmux list-*    Check in shell (sessions, windows, panes)               │
+│                                                                            │
+│  ATTACH/CREATE                                                             │
+│  ├─ tmux attach -t name       Attach to session                            │
+│  ├─ tmux new-session -s name  Create session                               │
+│  └─ tmux kill-session -t name Kill session                                 │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌─ EXAMPLE WORKFLOWS ─────────────────────────────────────────────────────────┐
+│                                                                             │
+│ 1. START NEW PROJECT                                                        │
+│    $ tmux-project myapp ~/projects/myapp                                    │
+│    [Automatically creates edit/build/logs windows with nvim running]        │
+│                                                                             │
+│ 2. ADD SPLIT PANE                                                           │
+│    [In edit window] Ctrl+a |   [Creates side-by-side panes]                 │
+│    Ctrl+a h        [Focus left pane - editor]                               │
+│    Ctrl+a l        [Focus right pane - terminal for quick commands]         │
+│                                                                             │
+│ 3. SWITCH BETWEEN WINDOWS                                                   │
+│    Ctrl+a 1        [Go to edit window]                                      │
+│    Ctrl+a 2        [Go to build window]                                     │
+│    Ctrl+a 3        [Go to logs window]                                      │
+│                                                                             │
+│ 4. PAUSE WORK (keep running)                                                │
+│    Ctrl+a d        [Detach - session stays active]                          │
+│    [Create new tab in wezterm for different project]                        │
+│    Ctrl+a s        [Later, list sessions and select]                        │
+│                                                                             │
+│ 5. MONITOR MULTIPLE STREAMS                                                 │
+│    [In build window] Ctrl+a 3        [Go to logs window]                    │
+│    [Split it] Ctrl+a -               [Create top/bottom panes]              │
+│    Ctrl+a 2 (switch back to build)                                          │
+│    Now see: editor / build / logs+logs [all visible at once]                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ KEY DIFFERENCES FROM DEFAULTS ─────────────────────────────────────────────┐
+│                                                                             │
+│ DEFAULT          │ THIS CONFIG          │ REASON                            │
+│ ─────────────────┼──────────────────────┼─────────────────────────────────  │
+│ Prefix: Ctrl+b   │ Prefix: Ctrl+a       │ Matches wezterm + SSH conventions │
+│ Start at 0       │ Start at 1           │ More intuitive (1-indexed)        │
+│ Split: % and "   │ Split: | and -       │ More intuitive (visual match)     │
+│ No vi keybinds   │ Full vi mode (hjkl)  │ Matches nvim + muscle memory      │
+│ No quick windows │ e=edit, b=build, etc │ Project-oriented workflow         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌ DYNAMIC WINDOW CREATION ───────────────────────────────────────────────────┐
+│                                                                            │
+│  Option 1: Interactive Naming (prompts for name)                           │
+│  ├─ Ctrl+a T       New terminal with custom name                           │
+│  ├─ Ctrl+a b       New build window with custom name                       │
+│  ├─ Ctrl+a a       New generic window with custom name                     │
+│  └─ Type name, press Enter → creates window                                │
+│                                                                            │
+│  Option 2: Auto-Numbered (fastest, no prompts)                             │
+│  ├─ Ctrl+a M-t     Creates tool1, tool2, tool3... automatically            │
+│  ├─ No prompts, instant creation                                           │
+│  └─ Jump with: Ctrl+a 4, Ctrl+a 5, etc                                     │
+│                                                                            │
+│  Option 3: List & Search (find existing or create)                         │
+│  ├─ Ctrl+a w       Show all windows with names & numbers                   │
+│  ├─ Type to search: "npm" finds npm window                                 │
+│  └─ Press Enter to jump                                                    │
+│                                                                            │
+│  EXAMPLE WORKFLOW:                                                         │
+│  $ tmux-project myapp ~/path                                               │
+│  [Now in editor]                                                           │
+│  Ctrl+a T           # Prompts: Window name?                                │
+│  npm                # [You type]                                           │
+│  Ctrl+a T           # Another window                                       │
+│  tests              # [You type]                                           │
+│  Ctrl+a T           # Another                                              │
+│  git                # [You type]                                           │
+│  Ctrl+a w           # Now see: 1:editor, 2:npm, 3:tests, 4:git             │
+│  Ctrl+a 2           # Jump to npm window                                   │
+│  Ctrl+a 3           # Jump to tests window                                 │
+│  Ctrl+a n           # Next window (cycles through)                         │
+│                                                                            │
+│  For more details:  ~/.config/tmux/DYNAMIC_WINDOWS.md                      │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘

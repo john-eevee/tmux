@@ -1,0 +1,183 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║  DYNAMIC WINDOWS - QUICK REFERENCE CARD                                   ║
+║                                                                            ║
+║  Never be limited to 3 fixed windows again!                              ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌─ THE PROBLEM ────────────────────────────────────────────────────────────┐
+│                                                                          │
+│  Before: Ctrl+a e, Ctrl+a b, Ctrl+a g = Only 3 fixed windows           │
+│  After:  4 different methods = Unlimited windows!                       │
+│                                                                          │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌─ THE 4 SOLUTIONS ────────────────────────────────────────────────────────┐
+│                                                                          │
+│  1️⃣  Ctrl+a T        INTERACTIVE (ask for name)                         │
+│      └─ Prompts: "Window name?"                                         │
+│      └─ You type: npm, tests, build, docs, etc                          │
+│      └─ Best for: Descriptive, organized setup                          │
+│      └─ Speed: Slower (one prompt per window)                           │
+│      └─ Example: Ctrl+a T → npm → Enter                                 │
+│                                                                          │
+│  2️⃣  Ctrl+a M-t      AUTO-NUMBERED (instant)                            │
+│      └─ No prompts, just creates: tool1, tool2, tool3...               │
+│      └─ Best for: Speed & simplicity                                    │
+│      └─ Speed: Fastest (instant creation)                               │
+│      └─ Example: Ctrl+a M-t (creates tool1 instantly)                   │
+│                                                                          │
+│  3️⃣  Ctrl+a a        GENERIC (flexible)                                  │
+│      └─ Prompts: "Window name?"                                         │
+│      └─ Fallback when others don't fit                                  │
+│      └─ Best for: Maximum flexibility                                   │
+│      └─ Speed: Medium                                                   │
+│                                                                          │
+│  4️⃣  Ctrl+a c        STANDARD (tmux default)                             │
+│      └─ Built-in tmux behavior                                          │
+│      └─ Same as Ctrl+a a mostly                                         │
+│      └─ Best for: Compatibility                                         │
+│      └─ Speed: Medium                                                   │
+│                                                                          │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌─ QUICK WORKFLOW ─────────────────────────────────────────────────────────┐
+│                                                                          │
+│  Start project:                                                         │
+│    $ tmux-project myapp ~/projects/myapp                                │
+│    [Now in "editor" window with nvim]                                   │
+│                                                                          │
+│  Add tools (pick ONE approach):                                         │
+│                                                                          │
+│  Approach 1: Named (organized)                                          │
+│    Ctrl+a T → npm                                                       │
+│    Ctrl+a T → tests                                                     │
+│    Ctrl+a T → docs                                                      │
+│    Result: 1:editor, 2:npm, 3:tests, 4:docs                             │
+│                                                                          │
+│  Approach 2: Auto-numbered (fast)                                       │
+│    Ctrl+a M-t  [tool1]                                                  │
+│    Ctrl+a M-t  [tool2]                                                  │
+│    Ctrl+a M-t  [tool3]                                                  │
+│    Result: 1:editor, 2:tool1, 3:tool2, 4:tool3                          │
+│                                                                          │
+│  Mixed approach (best of both):                                         │
+│    Ctrl+a T → npm                                                       │
+│    Ctrl+a M-t  [tool1]                                                  │
+│    Ctrl+a M-t  [tool2]                                                  │
+│    Ctrl+a T → docs                                                      │
+│    Result: 1:editor, 2:npm, 3:tool1, 4:tool2, 5:docs                    │
+│                                                                          │
+│  Navigate:                                                              │
+│    Ctrl+a w    → See all windows                                        │
+│    Ctrl+a 3    → Jump to window 3                                       │
+│    Ctrl+a n    → Next window                                            │
+│    Ctrl+a p    → Previous window                                        │
+│                                                                          │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌─ COMPARISON MATRIX ──────────────────────────────────────────────────────┐
+│                                                                          │
+│  METHOD      │ PROMPTS │ SPEED  │ NAMING       │ BEST FOR             │
+│  ─────────────────────────────────────────────────────────────────────  │
+│  Ctrl+a T    │ Yes     │ Slow   │ Custom       │ Descriptive names    │
+│  Ctrl+a M-t  │ No      │ FAST   │ Auto (tool1) │ Speed & simplicity   │
+│  Ctrl+a a    │ Yes     │ Med    │ Custom       │ Flexibility          │
+│  Ctrl+a c    │ Yes     │ Med    │ Custom       │ Standard tmux        │
+│  Ctrl+a w    │ No      │ N/A    │ Search       │ Finding existing     │
+│                                                                          │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌─ REAL EXAMPLES ──────────────────────────────────────────────────────────┐
+│                                                                          │
+│  Web Dev (Node.js):                                                     │
+│    Ctrl+a T → server       [npm start]                                  │
+│    Ctrl+a T → tests        [npm test]                                   │
+│    Ctrl+a T → webpack      [webpack watch]                              │
+│    Ctrl+a T → logs         [tail logs]                                  │
+│    Windows: 1:editor, 2:server, 3:tests, 4:webpack, 5:logs             │
+│                                                                          │
+│  Backend API (Go):                                                      │
+│    Ctrl+a M-t              [tool1]                                      │
+│    Ctrl+a M-t              [tool2]                                      │
+│    Ctrl+a M-t              [tool3]                                      │
+│    Windows: 1:editor, 2:tool1, 3:tool2, 4:tool3                        │
+│                                                                          │
+│  Full Stack (hybrid):                                                   │
+│    Ctrl+a T → frontend     [npm dev]                                    │
+│    Ctrl+a T → backend      [go run]                                     │
+│    Ctrl+a M-t              [tool1 - database]                           │
+│    Ctrl+a M-t              [tool2 - monitoring]                         │
+│    Windows: 1:editor, 2:frontend, 3:backend, 4:tool1, 5:tool2         │
+│                                                                          │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌─ NAVIGATION ─────────────────────────────────────────────────────────────┐
+│                                                                          │
+│  See all windows:                                                       │
+│    Ctrl+a w                                                             │
+│                                                                          │
+│  Jump by number:                                                        │
+│    Ctrl+a 1    → editor                                                 │
+│    Ctrl+a 2    → first custom window                                    │
+│    Ctrl+a 3    → second custom window                                   │
+│    Ctrl+a 9    → ninth window                                           │
+│                                                                          │
+│  Cycle through:                                                         │
+│    Ctrl+a n    → Next window (loops back)                               │
+│    Ctrl+a p    → Previous window (loops back)                           │
+│                                                                          │
+│  Rename later:                                                          │
+│    Ctrl+a ,    → Rename current window                                  │
+│                                                                          │
+└──────────────────────────────────────────────────────────────────────────┘
+
+DECISION TREE:
+═════════════════════════════════════════════════════════════════════════════
+
+  Do you want descriptive names?
+    ├─ YES → Use Ctrl+a T
+    │        You'll be prompted for a name
+    │        Example: npm, tests, build, docs
+    │
+    └─ NO  → Do you want maximum speed?
+               ├─ YES → Use Ctrl+a M-t
+               │        No prompts, instantly creates tool1, tool2...
+               │
+               └─ NO  → Use Ctrl+a c
+                        Standard approach
+
+CHEAT CODES:
+═════════════════════════════════════════════════════════════════════════════
+
+  5-window dev setup (named):
+    Ctrl+a T → dev-server
+    Ctrl+a T → tests
+    Ctrl+a T → logs
+    Ctrl+a b → build
+    # Result: editor, dev-server, tests, logs, build
+
+  4-window rapid setup (auto-numbered):
+    Ctrl+a M-t
+    Ctrl+a M-t
+    Ctrl+a M-t
+    # Result: editor, tool1, tool2, tool3
+
+  Best of both (hybrid):
+    Ctrl+a T → npm
+    Ctrl+a M-t
+    Ctrl+a M-t
+    Ctrl+a T → docs
+    # Result: editor, npm, tool1, tool2, docs
+
+═════════════════════════════════════════════════════════════════════════════
+
+Try it right now:
+
+  $ tmux-project test
+  $ Ctrl+a T           # Interactive: type name
+  $ Ctrl+a M-t         # Auto: instant tool
+  $ Ctrl+a w           # List all windows
+
+═════════════════════════════════════════════════════════════════════════════
+
+For complete guide: cat ~/.config/tmux/DYNAMIC_WINDOWS.md
