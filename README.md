@@ -47,7 +47,7 @@ Or use the keybinding: `Prefix + r`
 ## Keybindings Quick Reference
 
 ### Prefix Key
-- **Prefix**: `Ctrl + a` (instead of default `Ctrl + b`)
+- **Prefix**: `Ctrl + b` (the tmux default, compatible with WezTerm)
 
 ### Window Management (Separate concerns: editor, build, logs)
 | Key | Action |

@@ -1,6 +1,6 @@
 # Complete Keybindings Reference
 
-All keyboard shortcuts for this tmux configuration. **Prefix key is `Ctrl+a`**.
+All keyboard shortcuts for this tmux configuration. **Prefix key is `Ctrl+b`**.
 
 ## Quick Lookup by Category
 
@@ -463,9 +463,9 @@ git checkout feature    # Other branch
 
 ## Prefix Alternatives
 
-By default, all commands use `Ctrl+a` as the prefix. Inside neovim or other apps, you can:
+By default, all commands use `Ctrl+b` as the prefix. Inside neovim or other apps, you can:
 
-1. **Press prefix twice** - `Ctrl+a Ctrl+a` sends `Ctrl+a` to the app
+1. **Press prefix twice** - `Ctrl+b Ctrl+b` sends `Ctrl+b` to the app
 2. **Use keybindings without prefix** - Root keybindings with `-n` flag (not configured by default)
 3. **Change prefix** - Edit `tmux.conf` to use different key
 
